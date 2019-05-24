@@ -140,9 +140,9 @@ public class TelaSobre extends javax.swing.JFrame {
         });
         jPanel2.add(btnFechar, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 400, -1, -1));
 
-        jLabelCorFundo.setBackground(new java.awt.Color(0, 205, 255));
+        jLabelCorFundo.setBackground(new java.awt.Color(121, 147, 255));
         jLabelCorFundo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelCorFundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/icon.png"))); // NOI18N
+        jLabelCorFundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/icone-lta.png"))); // NOI18N
         jLabelCorFundo.setOpaque(true);
         jPanel2.add(jLabelCorFundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 333, 190));
 

@@ -65,11 +65,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenuItemSobre = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Gerador QR");
+        setTitle("LTA Service");
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(0, 205, 255));
+        jPanel1.setBackground(new java.awt.Color(121, 147, 255));
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanelFormatoImagem.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Formato da Imagem", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 10))); // NOI18N
@@ -120,7 +120,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jSliderTamanhoImagem.setMaximum(10);
         jSliderTamanhoImagem.setMinimum(1);
         jSliderTamanhoImagem.setPaintLabels(true);
-        jSliderTamanhoImagem.setValue(3);
         jSliderTamanhoImagem.setOpaque(false);
         jSliderTamanhoImagem.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
@@ -180,9 +179,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         jPanel1.add(btnLimparTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(242, 360, -1, -1));
 
-        jLabelFundo.setBackground(new java.awt.Color(0, 137, 255));
+        jLabelFundo.setBackground(new java.awt.Color(134, 154, 237));
         jLabelFundo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabelFundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/fundo_2.png"))); // NOI18N
+        jLabelFundo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/fundo.png"))); // NOI18N
         jLabelFundo.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         jLabelFundo.setMaximumSize(new java.awt.Dimension(32, 14));
         jLabelFundo.setMinimumSize(new java.awt.Dimension(32, 14));
