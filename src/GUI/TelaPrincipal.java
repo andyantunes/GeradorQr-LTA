@@ -5,12 +5,19 @@
  */
 package GUI;
 
+import java.awt.Graphics;
 import java.awt.Toolkit;
+import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import net.glxn.qrgen.QRCode;
 import net.glxn.qrgen.image.ImageType;
@@ -71,7 +78,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanelVisualizador.setBackground(new java.awt.Color(250, 250, 250));
-        jPanelVisualizador.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jPanelVisualizador.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
 
         javax.swing.GroupLayout jPanelVisualizadorLayout = new javax.swing.GroupLayout(jPanelVisualizador);
         jPanelVisualizador.setLayout(jPanelVisualizadorLayout);
@@ -170,6 +177,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         txtParaQrCode.setColumns(20);
         txtParaQrCode.setLineWrap(true);
         txtParaQrCode.setRows(5);
+        txtParaQrCode.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtParaQrCodeKeyReleased(evt);
+            }
+        });
         jScrollPane1ConteudoQR.setViewportView(txtParaQrCode);
 
         jPanelPrincipal.add(jScrollPane1ConteudoQR, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 279, 330, 70));
@@ -361,10 +373,50 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 "Campo(s) vazio(s)", JOptionPane.INFORMATION_MESSAGE);
         }
     }//GEN-LAST:event_btnGerarQrCodeActionPerformed
-
+    FileOutputStream fout;
+    ByteArrayOutputStream out;
     private void btnLimparTextoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparTextoActionPerformed
         txtParaQrCode.setText(null);
     }//GEN-LAST:event_btnLimparTextoActionPerformed
+
+    private void txtParaQrCodeKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtParaQrCodeKeyReleased
+        //Verifica se tem algo escrito
+        if(txtParaQrCode.getText().equals("")){
+            return;
+        }
+        
+        //Pegando o texto escrito
+        String texto = txtParaQrCode.getText();
+        //Recebe o stream do QR gerado pela biblioteca QR
+        out = QRCode.from(texto).withSize(247, 247).to(ImageType.PNG).stream();
+        
+        try{
+            //Cria o arquivo
+            fout = new FileOutputStream(new File("temp.png"));
+            //Escreve o conteúdo do arquivo
+            fout.write(out.toByteArray());
+            //Libera a memória
+            fout.flush();
+            fout.close();
+            
+            //Mostra a imagem gerada
+            //Lê a imagem
+            BufferedImage meuQr = ImageIO.read(new File("temp.png"));
+            //Desenha em um controle
+            JLabel label = new JLabel(new ImageIcon(meuQr));
+            //Obtem o canvas do JPanel para poder desenhar a imagem sobre ele
+            Graphics g = jPanelVisualizador.getGraphics();
+            //Desenha a imagem
+            g.drawImage(meuQr, WIDTH, WIDTH, label);
+            
+            
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_txtParaQrCodeKeyReleased
 
     /**
      * @param args the command line arguments
