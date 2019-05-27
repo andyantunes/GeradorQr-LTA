@@ -17,6 +17,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import net.glxn.qrgen.QRCode;
@@ -291,7 +292,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         //String conteudoArquivo = txtParaQrCode.getText();
         //String tituloArquivo = txtParaNome.getText();
 
-        if (!"".equals(txtParaNome.getText()) && !"".equals(txtParaQrCode.getText())) {
+        if (/*!"".equals(txtParaNome.getText()) &&*/ !"".equals(txtParaQrCode.getText())) {
             //Condições para setar a extensão da imagem
             if (pngBox.isSelected()) {
                 extArqNome = ".png";
@@ -350,6 +351,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
             }else if (tam225Box.isSelected()) {
                 size = size + 225;
             }*/
+            
+            /*
+            //Criando e salvando o QR
             String nomeArquivo = txtParaNome.getText() + extArqNome;
             try {
                 try (FileOutputStream f = new FileOutputStream(nomeArquivo)) {
@@ -366,12 +370,41 @@ public class TelaPrincipal extends javax.swing.JFrame {
             } catch (IOException ex) {
                 Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
             }
-
-        } else if(txtParaNome.getText().equals("") & txtParaQrCode.getText().equals("")
-            || txtParaNome.getText().equals("") | txtParaQrCode.getText().equals("")) {
+            */
+            
+            //Diálogo para salvar o QR gerado
+            JFileChooser fc = new JFileChooser();
+            //Obtem a resposta
+            int rv = fc.showDialog(txtParaQrCode, null);
+            if(rv == JFileChooser.APPROVE_OPTION){
+                try{
+                    //Obtem a rota e coloca a extensão do arquivo
+                    String rota = fc.getSelectedFile().getAbsolutePath() + extArqNome;
+                    //Cria o arquivo
+                    fout = new FileOutputStream(new File(rota));
+                    //Escreve o conteúdo do arquivo
+                    fout.write(out.toByteArray());
+                    
+                    //Libera a memória
+                    fout.flush();
+                    fout.close();
+                    
+                    File f = new File("temp.png");
+                    f.delete();
+                    
+                } catch (FileNotFoundException ex) {
+                    Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (IOException ex) {
+                    Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            
+        } else if(/*txtParaNome.getText().equals("") & */txtParaQrCode.getText().equals("")
+            || /*txtParaNome.getText().equals("") |*/ txtParaQrCode.getText().equals("")) {
             JOptionPane.showMessageDialog(null,"Informe o nome e/ou o conteúdo do arquivo!",
                 "Campo(s) vazio(s)", JOptionPane.INFORMATION_MESSAGE);
         }
+        
     }//GEN-LAST:event_btnGerarQrCodeActionPerformed
     FileOutputStream fout;
     ByteArrayOutputStream out;
