@@ -153,10 +153,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addGap(10, 10, 10))
         );
 
-        jPanelPrincipal.add(jPanelFormatoImagem, new org.netbeans.lib.awtextra.AbsoluteConstraints(126, 99, -1, -1));
+        jPanelPrincipal.add(jPanelFormatoImagem, new org.netbeans.lib.awtextra.AbsoluteConstraints(126, 58, -1, -1));
 
         jLabelTamanhoImagem.setText("Tamanho da imagem em (cm)");
-        jPanelPrincipal.add(jLabelTamanhoImagem, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 181, -1, -1));
+        jPanelPrincipal.add(jLabelTamanhoImagem, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 140, -1, -1));
 
         jSliderTamanhoImagem.setMajorTickSpacing(1);
         jSliderTamanhoImagem.setMaximum(10);
@@ -168,10 +168,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 jSliderTamanhoImagemStateChanged(evt);
             }
         });
-        jPanelPrincipal.add(jSliderTamanhoImagem, new org.netbeans.lib.awtextra.AbsoluteConstraints(83, 201, -1, -1));
+        jPanelPrincipal.add(jSliderTamanhoImagem, new org.netbeans.lib.awtextra.AbsoluteConstraints(83, 160, -1, -1));
 
         jLabelConteudoQR.setText("Conteúdo do QR Code");
-        jPanelPrincipal.add(jLabelConteudoQR, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 259, -1, -1));
+        jPanelPrincipal.add(jLabelConteudoQR, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 218, -1, -1));
 
         txtParaQrCode.setColumns(20);
         txtParaQrCode.setLineWrap(true);
@@ -183,12 +183,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
         });
         jScrollPane1ConteudoQR.setViewportView(txtParaQrCode);
 
-        jPanelPrincipal.add(jScrollPane1ConteudoQR, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 279, 330, 70));
+        jPanelPrincipal.add(jScrollPane1ConteudoQR, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 238, 330, 70));
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/help.png"))); // NOI18N
         jLabel1.setToolTipText("Digite a sua URL  (http://exemplo.com.br)");
-        jPanelPrincipal.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(339, 299, 30, 30));
+        jPanelPrincipal.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(339, 258, 30, 30));
 
         btnGerarQrCode.setText("Gerar QR Code");
         btnGerarQrCode.setOpaque(false);
@@ -197,7 +197,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 btnGerarQrCodeActionPerformed(evt);
             }
         });
-        jPanelPrincipal.add(btnGerarQrCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 360, -1, -1));
+        jPanelPrincipal.add(btnGerarQrCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 318, -1, -1));
 
         btnLimparTexto.setText("Limpar Texto");
         btnLimparTexto.setOpaque(false);
@@ -206,7 +206,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 btnLimparTextoActionPerformed(evt);
             }
         });
-        jPanelPrincipal.add(btnLimparTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(242, 360, -1, -1));
+        jPanelPrincipal.add(btnLimparTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(242, 318, -1, -1));
 
         jLabelFundo.setBackground(new java.awt.Color(134, 154, 237));
         jLabelFundo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -283,7 +283,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
     private void btnGerarQrCodeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGerarQrCodeActionPerformed
         int size = 0;
-        String extArq = "";
+        //String extArq = "";
         String extArqNome = "";
         float px = 37.795275590551f;
         int cm = jSliderTamanhoImagem.getValue();
@@ -298,13 +298,15 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 extArqNome = ".jpg";
             }
 
+            /*
             //Condições para setar a extensão da imagem
             if (pngBox.isSelected()) {
                 extArq = "PNG";
             }else if (jpgBox.isSelected()) {
                 extArq = "JPG";
             }
-
+            */
+            
             //Condições para setar o tamanho da imagem (jSlider)
             switch (jSliderTamanhoImagem.getValue()) {
                 case 1:
