@@ -49,6 +49,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnLimparNome = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabelNomeArquivo = new javax.swing.JLabel();
+        txtParaNome = new javax.swing.JTextField();
         jPanelVisualizador = new javax.swing.JPanel();
         jPanelPrincipal = new javax.swing.JPanel();
         jPanelFormatoImagem = new javax.swing.JPanel();
@@ -56,10 +60,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jpgBox = new javax.swing.JCheckBox();
         jLabelTamanhoImagem = new javax.swing.JLabel();
         jSliderTamanhoImagem = new javax.swing.JSlider();
-        jLabelNomeArquivo = new javax.swing.JLabel();
-        txtParaNome = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        btnLimparNome = new javax.swing.JButton();
         jLabelConteudoQR = new javax.swing.JLabel();
         jScrollPane1ConteudoQR = new javax.swing.JScrollPane();
         txtParaQrCode = new javax.swing.JTextArea();
@@ -72,6 +72,22 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jMenuItemSair = new javax.swing.JMenuItem();
         jMenuInfo = new javax.swing.JMenu();
         jMenuItemSobre = new javax.swing.JMenuItem();
+
+        btnLimparNome.setText("Limpar Nome");
+        btnLimparNome.setOpaque(false);
+        btnLimparNome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLimparNomeActionPerformed(evt);
+            }
+        });
+
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/help.png"))); // NOI18N
+        jLabel2.setToolTipText("Função desativada");
+
+        jLabelNomeArquivo.setText(" Nome do Arquivo");
+
+        txtParaNome.setEditable(false);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("LTA Service");
@@ -137,10 +153,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addGap(10, 10, 10))
         );
 
-        jPanelPrincipal.add(jPanelFormatoImagem, new org.netbeans.lib.awtextra.AbsoluteConstraints(126, 10, -1, -1));
+        jPanelPrincipal.add(jPanelFormatoImagem, new org.netbeans.lib.awtextra.AbsoluteConstraints(126, 99, -1, -1));
 
         jLabelTamanhoImagem.setText("Tamanho da imagem em (cm)");
-        jPanelPrincipal.add(jLabelTamanhoImagem, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 92, -1, -1));
+        jPanelPrincipal.add(jLabelTamanhoImagem, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 181, -1, -1));
 
         jSliderTamanhoImagem.setMajorTickSpacing(1);
         jSliderTamanhoImagem.setMaximum(10);
@@ -152,25 +168,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 jSliderTamanhoImagemStateChanged(evt);
             }
         });
-        jPanelPrincipal.add(jSliderTamanhoImagem, new org.netbeans.lib.awtextra.AbsoluteConstraints(83, 112, -1, -1));
-
-        jLabelNomeArquivo.setText(" Nome do Arquivo");
-        jPanelPrincipal.add(jLabelNomeArquivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 167, -1, -1));
-        jPanelPrincipal.add(txtParaNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 187, 330, 25));
-
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/help.png"))); // NOI18N
-        jLabel2.setToolTipText("Digite o nome do seu arquivo");
-        jPanelPrincipal.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(339, 189, 30, 20));
-
-        btnLimparNome.setText("Limpar Nome");
-        btnLimparNome.setOpaque(false);
-        btnLimparNome.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLimparNomeActionPerformed(evt);
-            }
-        });
-        jPanelPrincipal.add(btnLimparNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 218, -1, -1));
+        jPanelPrincipal.add(jSliderTamanhoImagem, new org.netbeans.lib.awtextra.AbsoluteConstraints(83, 201, -1, -1));
 
         jLabelConteudoQR.setText("Conteúdo do QR Code");
         jPanelPrincipal.add(jLabelConteudoQR, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 259, -1, -1));
@@ -401,8 +399,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
             
         } else if(/*txtParaNome.getText().equals("") & */txtParaQrCode.getText().equals("")
             || /*txtParaNome.getText().equals("") |*/ txtParaQrCode.getText().equals("")) {
-            JOptionPane.showMessageDialog(null,"Informe o nome e/ou o conteúdo do arquivo!",
-                "Campo(s) vazio(s)", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Informe o conteúdo do arquivo!",
+                "Campo vazio", JOptionPane.INFORMATION_MESSAGE);
         }
         
     }//GEN-LAST:event_btnGerarQrCodeActionPerformed
