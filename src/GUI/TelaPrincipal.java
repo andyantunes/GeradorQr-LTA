@@ -41,7 +41,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
+        jPanelVisualizador = new javax.swing.JPanel();
+        jPanelPrincipal = new javax.swing.JPanel();
         jPanelFormatoImagem = new javax.swing.JPanel();
         pngBox = new javax.swing.JCheckBox();
         jpgBox = new javax.swing.JCheckBox();
@@ -69,8 +70,25 @@ public class TelaPrincipal extends javax.swing.JFrame {
         setResizable(false);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanel1.setBackground(new java.awt.Color(121, 147, 255));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanelVisualizador.setBackground(new java.awt.Color(250, 250, 250));
+        jPanelVisualizador.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        javax.swing.GroupLayout jPanelVisualizadorLayout = new javax.swing.GroupLayout(jPanelVisualizador);
+        jPanelVisualizador.setLayout(jPanelVisualizadorLayout);
+        jPanelVisualizadorLayout.setHorizontalGroup(
+            jPanelVisualizadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 246, Short.MAX_VALUE)
+        );
+        jPanelVisualizadorLayout.setVerticalGroup(
+            jPanelVisualizadorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 246, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(jPanelVisualizador, new org.netbeans.lib.awtextra.AbsoluteConstraints(375, 75, 250, 250));
+
+        jPanelPrincipal.setBackground(new java.awt.Color(121, 147, 255));
+        jPanelPrincipal.setPreferredSize(new java.awt.Dimension(640, 400));
+        jPanelPrincipal.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanelFormatoImagem.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createEtchedBorder(), "Formato da Imagem", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 10))); // NOI18N
         jPanelFormatoImagem.setOpaque(false);
@@ -111,10 +129,10 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 .addGap(10, 10, 10))
         );
 
-        jPanel1.add(jPanelFormatoImagem, new org.netbeans.lib.awtextra.AbsoluteConstraints(126, 10, -1, -1));
+        jPanelPrincipal.add(jPanelFormatoImagem, new org.netbeans.lib.awtextra.AbsoluteConstraints(126, 10, -1, -1));
 
         jLabelTamanhoImagem.setText("Tamanho da imagem em (cm)");
-        jPanel1.add(jLabelTamanhoImagem, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 92, -1, -1));
+        jPanelPrincipal.add(jLabelTamanhoImagem, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 92, -1, -1));
 
         jSliderTamanhoImagem.setMajorTickSpacing(1);
         jSliderTamanhoImagem.setMaximum(10);
@@ -126,16 +144,16 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 jSliderTamanhoImagemStateChanged(evt);
             }
         });
-        jPanel1.add(jSliderTamanhoImagem, new org.netbeans.lib.awtextra.AbsoluteConstraints(83, 112, -1, -1));
+        jPanelPrincipal.add(jSliderTamanhoImagem, new org.netbeans.lib.awtextra.AbsoluteConstraints(83, 112, -1, -1));
 
         jLabelNomeArquivo.setText(" Nome do Arquivo");
-        jPanel1.add(jLabelNomeArquivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 167, -1, -1));
-        jPanel1.add(txtParaNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 187, 330, 25));
+        jPanelPrincipal.add(jLabelNomeArquivo, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 167, -1, -1));
+        jPanelPrincipal.add(txtParaNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 187, 330, 25));
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/help.png"))); // NOI18N
         jLabel2.setToolTipText("Digite o nome do seu arquivo");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(339, 189, 30, 20));
+        jPanelPrincipal.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(339, 189, 30, 20));
 
         btnLimparNome.setText("Limpar Nome");
         btnLimparNome.setOpaque(false);
@@ -144,22 +162,22 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 btnLimparNomeActionPerformed(evt);
             }
         });
-        jPanel1.add(btnLimparNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 218, -1, -1));
+        jPanelPrincipal.add(btnLimparNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 218, -1, -1));
 
         jLabelConteudoQR.setText("Conteúdo do QR Code");
-        jPanel1.add(jLabelConteudoQR, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 259, -1, -1));
+        jPanelPrincipal.add(jLabelConteudoQR, new org.netbeans.lib.awtextra.AbsoluteConstraints(12, 259, -1, -1));
 
         txtParaQrCode.setColumns(20);
         txtParaQrCode.setLineWrap(true);
         txtParaQrCode.setRows(5);
         jScrollPane1ConteudoQR.setViewportView(txtParaQrCode);
 
-        jPanel1.add(jScrollPane1ConteudoQR, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 279, 330, 70));
+        jPanelPrincipal.add(jScrollPane1ConteudoQR, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 279, 330, 70));
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagens/help.png"))); // NOI18N
         jLabel1.setToolTipText("Digite a sua URL  (http://exemplo.com.br)");
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(339, 299, 30, 30));
+        jPanelPrincipal.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(339, 299, 30, 30));
 
         btnGerarQrCode.setText("Gerar QR Code");
         btnGerarQrCode.setOpaque(false);
@@ -168,7 +186,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 btnGerarQrCodeActionPerformed(evt);
             }
         });
-        jPanel1.add(btnGerarQrCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 360, -1, -1));
+        jPanelPrincipal.add(btnGerarQrCode, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 360, -1, -1));
 
         btnLimparTexto.setText("Limpar Texto");
         btnLimparTexto.setOpaque(false);
@@ -177,7 +195,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
                 btnLimparTextoActionPerformed(evt);
             }
         });
-        jPanel1.add(btnLimparTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(242, 360, -1, -1));
+        jPanelPrincipal.add(btnLimparTexto, new org.netbeans.lib.awtextra.AbsoluteConstraints(242, 360, -1, -1));
 
         jLabelFundo.setBackground(new java.awt.Color(134, 154, 237));
         jLabelFundo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -186,9 +204,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jLabelFundo.setMaximumSize(new java.awt.Dimension(32, 14));
         jLabelFundo.setMinimumSize(new java.awt.Dimension(32, 14));
         jLabelFundo.setPreferredSize(new java.awt.Dimension(32, 14));
-        jPanel1.add(jLabelFundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 370, 400));
+        jPanelPrincipal.add(jLabelFundo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 370, 400));
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 370, 400));
+        getContentPane().add(jPanelPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 640, 400));
 
         jMenuArquivo.setText("Arquivo");
 
@@ -399,8 +417,9 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenuInfo;
     private javax.swing.JMenuItem jMenuItemSair;
     private javax.swing.JMenuItem jMenuItemSobre;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanelFormatoImagem;
+    private javax.swing.JPanel jPanelPrincipal;
+    private javax.swing.JPanel jPanelVisualizador;
     private javax.swing.JScrollPane jScrollPane1ConteudoQR;
     private javax.swing.JSlider jSliderTamanhoImagem;
     private javax.swing.JCheckBox jpgBox;
