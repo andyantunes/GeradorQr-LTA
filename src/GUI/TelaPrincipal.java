@@ -5,8 +5,14 @@
  */
 package GUI;
 
+import java.awt.AWTException;
 import java.awt.Graphics;
+import java.awt.Image;
+import java.awt.SystemTray;
 import java.awt.Toolkit;
+import java.awt.TrayIcon;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
@@ -17,6 +23,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
@@ -38,8 +45,49 @@ public class TelaPrincipal extends javax.swing.JFrame {
         setIcon();
         
         setConfDefault();
+        
     }
+ 
+    public void initialize() {
+        
+        // Teste para verificar se o recurso é suportado
+        if (SystemTray.isSupported()) {
 
+            // Criando variável e capturando a imagem do ícone
+            Image trayImage = Toolkit.getDefaultToolkit().getImage(this.getClass().getResource("/Imagens/tray.gif"));
+
+            // Mensagem exibida ao passar o mouse sobre o íncone da bandeija
+            TrayIcon tray = new TrayIcon(trayImage, "Tray Icon Example");
+            SystemTray sysTray = SystemTray.getSystemTray();
+
+            // Action de duplo clique no ícone
+            tray.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    // Maximizando a tela
+                    new TelaPrincipal().setVisible(true);
+                    // Tirando o ícone do System Tray
+                    sysTray.remove(tray);
+                }
+            });
+
+            // Redimensionamento da imagem do ícone
+            tray.setImageAutoSize(true);
+
+            // Tratamento de erros
+            try {
+                sysTray.add(tray);
+            } catch (AWTException e) {
+                e.printStackTrace();
+            }
+            // Mensagem exibida quando o programa vai para segundo plano
+            tray.displayMessage("Trabalhando em segundo plano.", "Clique aqui para abrir mais detalhes", TrayIcon.MessageType.INFO);
+        } else {
+            // Caso o System Tray não seja suportado
+            JOptionPane.showMessageDialog(null, "Recurso não disponível.");
+        }
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -89,12 +137,17 @@ public class TelaPrincipal extends javax.swing.JFrame {
 
         txtParaNome.setEditable(false);
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("LTA Service");
         setResizable(false);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
+        });
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jPanelVisualizador.setBackground(new java.awt.Color(250, 250, 250));
+        jPanelVisualizador.setBackground(new java.awt.Color(255, 255, 255));
         jPanelVisualizador.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 2));
 
         javax.swing.GroupLayout jPanelVisualizadorLayout = new javax.swing.GroupLayout(jPanelVisualizador);
@@ -163,11 +216,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         jSliderTamanhoImagem.setMinimum(1);
         jSliderTamanhoImagem.setPaintLabels(true);
         jSliderTamanhoImagem.setOpaque(false);
-        jSliderTamanhoImagem.addChangeListener(new javax.swing.event.ChangeListener() {
-            public void stateChanged(javax.swing.event.ChangeEvent evt) {
-                jSliderTamanhoImagemStateChanged(evt);
-            }
-        });
         jPanelPrincipal.add(jSliderTamanhoImagem, new org.netbeans.lib.awtextra.AbsoluteConstraints(83, 160, -1, -1));
 
         jLabelConteudoQR.setText("Conteúdo do QR Code");
@@ -272,10 +320,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
         //Seta 125 como verdadeiro p/ não poder desmarcar clicando nele mesmo
         jpgBox.setSelected(true);
     }//GEN-LAST:event_jpgBoxActionPerformed
-
-    private void jSliderTamanhoImagemStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_jSliderTamanhoImagemStateChanged
-
-    }//GEN-LAST:event_jSliderTamanhoImagemStateChanged
 
     private void btnLimparNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLimparNomeActionPerformed
         txtParaNome.setText(null);
@@ -442,7 +486,6 @@ public class TelaPrincipal extends javax.swing.JFrame {
             //Desenha a imagem
             g.drawImage(meuQr, WIDTH, WIDTH, label);
             
-            
         } catch (FileNotFoundException ex) {
             Logger.getLogger(TelaPrincipal.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
@@ -450,6 +493,11 @@ public class TelaPrincipal extends javax.swing.JFrame {
         }
         
     }//GEN-LAST:event_txtParaQrCodeKeyReleased
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        // Colocando ícone no System Tray
+        initialize();
+    }//GEN-LAST:event_formWindowClosed
 
     /**
      * @param args the command line arguments
