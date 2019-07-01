@@ -23,12 +23,13 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
-import javax.swing.JDialog;
 import javax.swing.JFileChooser;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import net.glxn.qrgen.QRCode;
 import net.glxn.qrgen.image.ImageType;
+
+
 
 /**
  *
