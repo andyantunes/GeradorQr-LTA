@@ -285,7 +285,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         int size = 0;
         //String extArq = "";
         String extArqNome = "";
-        float px = 37.795275590551f;
+        float px = 37.7957517575025f;
         int cm = jSliderTamanhoImagem.getValue();
         //String conteudoArquivo = txtParaQrCode.getText();
         //String tituloArquivo = txtParaNome.getText();
@@ -462,7 +462,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
