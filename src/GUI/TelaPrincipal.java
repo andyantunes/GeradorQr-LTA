@@ -585,5 +585,29 @@ public class TelaPrincipal extends javax.swing.JFrame {
         SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
         System.out.println(dateFormat.format(date));
         
+        if (testInternetConnection("https://www.google.com")) {
+            System.out.println("Conectado!");
+        } else {
+            JOptionPane.showMessageDialog(null,"Verifique a conexão com a internet!",
+                "Sem conexão.", JOptionPane.INFORMATION_MESSAGE);
+        }
+            /*
+        if (testInternetConnection("http://www.google.com.br")) {
+        System.out.println("Conectado!");
+        } else {
+        System.out.println("Verifique sua conexão com a internet!");
+        } */
+    }
+    
+    public static boolean testInternetConnection(String address) {
+        try {
+            URL url = new URL(address);
+            URLConnection connection = url.openConnection();
+            connection.connect();
+            return true;
+            
+        } catch (IOException e) {
+            return false;
+        }
     }
 }
