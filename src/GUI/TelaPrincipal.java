@@ -5,6 +5,7 @@
  */
 package GUI;
 
+import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
 import java.awt.AWTException;
 import java.awt.Graphics;
 import java.awt.Image;
@@ -19,6 +20,14 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.net.URLConnection;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.TimeZone;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
@@ -28,8 +37,6 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import net.glxn.qrgen.QRCode;
 import net.glxn.qrgen.image.ImageType;
-
-
 
 /**
  *
@@ -47,6 +54,8 @@ public class TelaPrincipal extends javax.swing.JFrame {
         
         setConfDefault();
         
+        sendNotification();
+                
     }
  
     public void initialize() {
@@ -569,5 +578,12 @@ public class TelaPrincipal extends javax.swing.JFrame {
     private void setConfDefault() {
         //tam125Box.setSelected(true);
         pngBox.setSelected(true);
+    }
+    
+    private void sendNotification() {
+        Date date = new Date();
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+        System.out.println(dateFormat.format(date));
+        
     }
 }
