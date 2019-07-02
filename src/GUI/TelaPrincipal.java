@@ -586,7 +586,7 @@ public class TelaPrincipal extends javax.swing.JFrame {
         System.out.println(dateFormat.format(date));
         
         if (testInternetConnection("https://www.google.com")) {
-            System.out.println("Conectado!");
+            sendMail();
         } else {
             JOptionPane.showMessageDialog(null,"Verifique a conexão com a internet!",
                 "Sem conexão.", JOptionPane.INFORMATION_MESSAGE);
@@ -609,5 +609,13 @@ public class TelaPrincipal extends javax.swing.JFrame {
         } catch (IOException e) {
             return false;
         }
+    }
+    
+    private void sendMail() {
+        EmailCreate em = new EmailCreate();
+        em.sendMail("andersonlantunes@gmail.com", 
+                    "anderson.antunes@fatec.sp.gov.br",
+                    "Teste", 
+                    "Testando envio de e-mail no gerador");
     }
 }
